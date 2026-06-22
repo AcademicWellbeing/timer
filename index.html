@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25:00 ⏳</title>
+    <link rel="icon" type="image/png" href="/timer/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names:hourglass_check,local_florist,play_arrow,pause,resume,refresh,notification_sound,potted_plant,music_note_2,gesture_select,delete"/>
+    <script type="module" crossorigin src="/timer/assets/index-CZSu5dUD.js"></script>
+    <link rel="stylesheet" crossorigin href="/timer/assets/index-EDCnFWSX.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <button id="delete-btn"><span class="material-symbols-outlined" translate="no">delete</span></button>
+      <div class="version-text title-text"><img src="favicon.png" alt="resthesis logo">RESTimeKeeper v2.762</div>
+      <!--div class="version-text">🗂 To save progress and access more features, use <a href="https://resthesis.github.io/timer3" target="_blank">RESTimeKeeper 3</a></div-->
+
+      <!-- Default Total Time Message -->
+      <div class="total-time-display">
+        <span class="material-symbols-outlined md-20" translate="no">hourglass_check</span> Focused for <span id="focused-time">0 minute</span><br>
+        <span class="material-symbols-outlined md-20" translate="no">local_florist</span> Rested for <span id="rested-time">0 minute</span>
+      </div>
+    
+      <div class="timer-container">
+        <!-- Default Status Message -->
+        <div id="status-message">Use the slider to set your focus time</div>
+    
+        <!-- Time Selection Bar (Default: 25) -->
+        <div id="slider-wrapper">
+          <input type="range" id="task-time-bar" min="5" max="50" step="5" value="25">
+        </div>
+
+        <!-- Hidden Seed Growth Progress Bar -->
+        <div id="progress-wrapper" data-label="Growth: 0%" style="display: none;">
+          <progress id="progress-bar" value="0" max="100"></progress>
+        </div>
+      
+        <!-- Hidden Seed Limit Display-->
+        <div id="limit-display" style="display: none;">- No more seedlings can be planted -</div>
+
+        <!-- Default Timer Display -->
+        <div id="timer-display">25:00</div>
+        <div class="button-container">
+          <button id="start-btn" class="btn green-btn"><span class="material-symbols-outlined md-22" translate="no">play_arrow</span> Start</button>
+          <!-- Hidden Timer Reset Button (shown when the timer is pause) -->
+          <button id="reset-btn" class="btn red-btn" style="display: none;"><span class="material-symbols-outlined md-20" translate="no">refresh</span> Reset</button>
+        </div>
+        <!-- Hidden Skip Break Button -->
+        <!--button id="skip-break-btn" class="red-btn" style="display: none;">Skip this break</button-->
+      </div>
+
+      <div class="audio-setting">
+        <span class="material-symbols-outlined md-20" translate="no">notification_sound</span> Time's up sound:
+        <select id="sound-list">
+          <option value="Flute">Flute</option>
+          <option value="Guitar">Guitar</option>
+          <option value="Piano">Piano</option>
+          <option value="Quiet">Quiet</option>
+        </select>
+      </div>
+
+      <div class="audio-setting">
+        <span class="material-symbols-outlined md-20" translate="no">music_note_2</span> Background music:
+        <select id="music-list">
+          <option value="Classical">Classical</option>
+          <option value="Ocean">Ocean</option>
+          <option value="Bird">Bird</option>
+          <option value="Quiet">Quiet</option>
+        </select>
+      </div>
+
+
+      <div class="footer">
+        <!-- Hidden Merge Reminder -->
+        <div id="merge-reminder" class="tooltip tooltip-green" style="display: none;" ontouchstart=""><span class="material-symbols-outlined" translate="no">gesture_select</span>
+          <span class="tooltiptext tooltiptext-green tooltip-top">Select two matching plants to merge them.</span>
+        </div>
+        <div id="reward-container"></div>
+        <div id=reward-info>
+          <progress id="reward-bar" value="0" max="100"></progress>
+          <span id="reward-display">
+            <span class="material-symbols-outlined" translate="no">potted_plant</span>
+            <span id="reward-message"></span>
+          </span>
+        </div>
+        A wellbeing and productivity tool created by <a href="https://profiles.uts.edu.au/Erica.Ho" target="_blank">Dr Erica Ho</a>
+      </div>
+    </div>
+
+  </body>
+</html>
