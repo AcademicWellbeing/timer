@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25:00 📚</title>
+    <link rel="icon" type="image/png" href="/timer/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names:hourglass,task,local_florist,play_arrow,pause,resume,refresh,notification_sound,music_note_2,gesture_select,potted_plant,info,help,feedback,close"/>
+    <script type="module" crossorigin src="/timer/assets/index-p53Z73sH.js"></script>
+    <link rel="stylesheet" crossorigin href="/timer/assets/index-Bh0hcmOn.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="time-clock" style="display: none;"><span class="material-symbols-outlined" translate="no">hourglass</span></div>
+      <div class="message-text title-text">RESTimeReminder<span id="version-text"></span></div>
+      <!--div class="message-text">🗂 To download progress and access more features, use <a href="https://resthesis.github.io/timer2" target="_blank">RESTimeKeeper</a></div-->
+
+      <!-- Default Total Time Message -->
+      <div class="total-time-display">
+        <span class="material-symbols-outlined md-20" translate="no">task</span> Focused for <span id="focused-time">0 minute</span><br>
+        <span class="material-symbols-outlined md-20" translate="no">local_florist</span> Rested for <span id="rested-time">0 minute</span>
+      </div>
+    
+      <div class="timer-container">
+        <!-- Default Status Message -->
+        <div id="status-message">Use the slider to set your focus time</div>
+    
+        <!-- Time Selection Bar (Default: 25) -->
+        <div id="slider-wrapper">
+          <input type="range" id="task-time-bar" min="5" max="50" step="5" value="25">
+        </div>
+
+        <!-- Hidden Seed Growth Progress Bar -->
+        <div id="progress-wrapper" data-label="Growth: 0%" style="display: none;">
+          <progress id="progress-bar" value="0" max="100"></progress>
+        </div>
+      
+        <!-- Hidden Seed Limit Display-->
+        <div id="limit-display" style="display: none;">- No more seedlings can be planted -</div>
+
+        <!-- Default Timer Display -->
+        <div id="timer-display">25:00</div>
+        <div class="button-container">
+          <button id="start-btn" class="btn green-btn">
+            <span class="material-symbols-outlined md-22 start-btn-icon" translate="no">play_arrow</span>
+            <span class="start-btn-text"> Start</span>
+          </button>
+          <!-- Hidden Timer Reset Button (shown when the timer is pause) -->
+          <button id="reset-btn" class="btn red-btn" style="display: none;"><span class="material-symbols-outlined md-20" translate="no">refresh</span> Reset</button>
+        </div>
+        <!-- Hidden Skip Break Button -->
+        <!--button id="skip-break-btn" class="red-btn" style="display: none;">Skip this break</button-->
+      </div>
+
+      <div class="audio-setting">
+        <span class="material-symbols-outlined md-20" translate="no">notification_sound</span> Time's up sound:
+        <select id="sound-list">
+          <option value="Flute">Flute</option>
+          <option value="Guitar">Guitar</option>
+          <option value="Piano">Piano</option>
+          <option value="Quiet">Quiet</option>
+        </select>
+      </div>
+
+      <div class="audio-setting">
+        <span class="material-symbols-outlined md-20" translate="no">music_note_2</span> Background music:
+        <select id="music-list">
+          <option value="Classical">Classical</option>
+          <option value="Ocean">Ocean</option>
+          <option value="Bird">Bird</option>
+          <option value="Quiet">Quiet</option>
+        </select>
+      </div>
+
+
+      <div class="footer">
+        <!-- Hidden Merge Reminder -->
+        <div id="merge-reminder" class="tooltip tooltip-green" style="display: none;" ontouchstart=""><span class="material-symbols-outlined" translate="no">gesture_select</span>
+          <span class="tooltiptext tooltiptext-green tooltip-top">Select two matching plants to merge them.</span>
+        </div>
+        <div id="reward-container"></div>
+        <div id=reward-info>
+          <progress id="reward-bar" value="0" max="100"></progress>
+          <span id="reward-display">
+            <span class="material-symbols-outlined" translate="no">potted_plant</span>
+            <span id="reward-message"></span>
+          </span>
+        </div>
+        <button id="about-btn" class="foot-btn" onclick="document.getElementById('about-dialog').showModal()"><span class="material-symbols-outlined md-18" translate="no">info</span> About</button>
+        <button id="faq-btn" class="foot-btn" onclick="document.getElementById('faq-dialog').showModal()"><span class="material-symbols-outlined md-18" translate="no">help</span> FAQ</button>
+        <button class="foot-btn"><span class="material-symbols-outlined md-18" translate="no">feedback</span> <a href="https://resthesis.github.io" target="_blank">Feedback</a></button>
+
+        <dialog id="about-dialog" class="glass-dialog">
+          <button class="close-btn" onclick="document.getElementById('about-dialog').close()"><span class="material-symbols-outlined md-18" translate="no">close</span></button>
+          <h3>About RESTimeReminder</h3>
+          <div class="dialog-msg">RESTimeReminder is a single-day focus timer designed to help users maintain productivity and encourage regular breaks.<br>
+            Timer records reset every 24 hours, so you don't need to worry about yesterday's performance. Today is the only timeline that matters for your focus and your health.<br>
+            Informed by research in student focus, fatigue, and motivation, this timer automatically sets a break session after each work session to promote healthy work habits.<br>
+            RESTimeReminder is a wellbeing and productivity tool created and developed by<br><a href="https://profiles.uts.edu.au/Erica.Ho" target="_blank">Dr Erica Ho</a>, as part of the RESThesis project for supporting research student wellbeing.
+          </div>
+        </dialog>
+
+        <dialog id="faq-dialog" class="glass-dialog">
+          <button class="close-btn" onclick="document.getElementById('faq-dialog').close()"><span class="material-symbols-outlined md-18" translate="no">close</span></button>
+          <h3>Frequently Asked Questions</h3>
+          <div class="dialog-msg"><b>Is RESTimeReminder free to use?</b><br>Yes, RESTimeReminder is completely free.</div><br>
+          <div class="dialog-msg"><b>Does RESTimeReminder require installation?</b><br>No, RESTimeReminder can be used directly within a web browser on computers and mobile devices.</div><br>
+          <div class="dialog-msg"><b>Will my progress sync across devices?</b><br>No, your progress is saved locally and not shared across devices. If you clear your browser data or use incognito/private browsing mode, your progress will be lost.</div><br>
+          <div class="dialog-msg"><b>How can I track my progress over weeks, months, or years instead of daily?</b><br>You may use <a href="https://resthesis.github.io/timer2" target="_blank">RESTimeKeeper</a> which is designed for long-term time tracking.</div>
+        </dialog>
+
+      </div>
+    </div>
+
+  </body>
+</html>
