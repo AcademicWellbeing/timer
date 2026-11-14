@@ -1,0 +1,1 @@
+(function(){let e,t,n,r=!1;onmessage=a=>{a.data.action===`start`?(e=Date.now(),r||(t=a.data.duration*1e3),r=!1,i()):a.data.action===`pause`&&(clearInterval(n),t-=Date.now()-e,r=!0)};function i(){n=setInterval(()=>{let r=Date.now()-e,i=Math.max(t-r,0);postMessage({remaining:Math.floor(i/1e3)}),i===0&&clearInterval(n)},200)}})();
